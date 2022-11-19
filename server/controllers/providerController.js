@@ -67,3 +67,25 @@ const GetProviderDetails = asyncHandler(async (req, res) => {
         throw new Error("Error getting provider details");
     }
 }
+
+const UpdateProvider = asyncHandler(async (req, res) => {
+    try {
+        const provider = await Provider.findById(req.params.id);
+        
+        if (provider) {
+            provider.name = req.body.name || provider.name;
+            provider.type = req.body.type || provider.type;
+            provider.city = req.body.city || provider.city;
+            provider.tags = req.body.tags || provider.tags;
+
+            const updatedProvider = await provider.save();
+            res.status(200).json(updatedProvider);
+        } else {
+            res.status(404);
+            throw new Error('Provider not found');
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error updating provider");
+    }
+});
