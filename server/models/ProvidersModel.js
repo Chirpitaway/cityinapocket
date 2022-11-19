@@ -3,7 +3,7 @@ const ProvidersSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
-    ref: "City",
+    ref: "Providers",
   },
  type:{
     type:String,

@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const ticketTypesSchema = mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+      ref: "TicketTypes",
+    },
   price: {
     type: Number,
     required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-    ref: "City",
   },
   city: {
     type: String,
