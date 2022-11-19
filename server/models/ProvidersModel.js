@@ -20,6 +20,22 @@ const Comment = mongoose.Schema({
   },
 });
 
+const TicketType = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    ref: "TicketTypes",
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  // Duration can be unlimited or limited to a specific number of days
+  duration: {
+    type: String,
+  }
+});
+
 const ProvidersSchema = mongoose.Schema({
   name: {
     type: String,
@@ -31,7 +47,7 @@ const ProvidersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  ticketTypes: [String],
+  ticketTypes: [TicketType],
   city: {
     type: String,
     required: true,
