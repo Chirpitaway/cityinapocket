@@ -70,7 +70,7 @@ const GetProviderDetails = asyncHandler(async (req, res) => {
 
 const UpdateProvider = asyncHandler(async (req, res) => {
     try {
-        const provider = await Provider.findById(req.params.id);
+        let provider = await Provider.findById(req.params.id);
         
         if (provider) {
             provider.name = req.body.name || provider.name;
@@ -106,3 +106,12 @@ const DeleteProvider = asyncHandler(async (req, res) => {
         throw new Error("Error deleting provider");
     }
 });
+
+module.exports = {
+    AddProvider,
+    GetProviders,
+    GetProvider,
+    GetProviderDetails,
+    UpdateProvider,
+    DeleteProvider
+}
