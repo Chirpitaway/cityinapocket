@@ -1,9 +1,10 @@
 const asyncHandler = require('express-async-handler');
 const Provider = require('../models/ProviderModel');
+const bucket = require('../helpers/bucket');
 
 const AddProvider = asyncHandler(async (req, res) => {
     const { name, type, city } = req.body;
-    
+
     try {
         // Check if provider already exists
         const providerExists = await Provider.findOne({ name: name, type: type, city: city });
@@ -17,7 +18,16 @@ const AddProvider = asyncHandler(async (req, res) => {
                 type: type,
                 city: city,
             });
-            res.status(201).json(provider);
+            const blob = bucket.file(`${provider._id}.${req.file.mimetype.split('/')[1]}`);
+            const blobStream = blob.createWriteStream()
+            blobStream.on('finish', async () => {
+                res.status(201).json(provider);
+            })
+            blobStream.on('error', (err) => {
+                res.status(400);
+                throw new Error("Error creating provider");
+            })
+            blobStream.end(req.file.buffer)
         }
     } catch (error) {
         res.status(500);
@@ -28,7 +38,7 @@ const AddProvider = asyncHandler(async (req, res) => {
 const GetProviders = asyncHandler(async (req, res) => {
     try {
         let query = req.query;
-        const providers = await Provider.find({query}, 'name type city tags');
+        const providers = await Provider.find({ query }, 'name type city tags');
         res.status(200).json(providers);
     } catch (error) {
         res.status(500);
@@ -39,7 +49,7 @@ const GetProviders = asyncHandler(async (req, res) => {
 const GetProvider = asyncHandler(async (req, res) => {
     try {
         const provider = await Provider.findById(req.params.id, 'name type city tags comments ticketTypes');
-        
+
         if (provider) {
             res.status(200).json(provider);
         } else {
@@ -55,7 +65,7 @@ const GetProvider = asyncHandler(async (req, res) => {
 const GetProviderDetails = asyncHandler(async (req, res) => {
     try {
         const provider = await Provider.findById(req.params.id);
-        
+
         if (provider) {
             res.status(200).json(provider);
         } else {
@@ -71,7 +81,7 @@ const GetProviderDetails = asyncHandler(async (req, res) => {
 const UpdateProvider = asyncHandler(async (req, res) => {
     try {
         let provider = await Provider.findById(req.params.id);
-        
+
         if (provider) {
             provider.name = req.body.name || provider.name;
             provider.type = req.body.type || provider.type;
@@ -93,7 +103,7 @@ const UpdateProvider = asyncHandler(async (req, res) => {
 const DeleteProvider = asyncHandler(async (req, res) => {
     try {
         const provider = await Provider.findById(req.params.id);
-        
+
         if (provider) {
             await provider.remove();
             res.status(200).json({ message: 'Provider removed' });
