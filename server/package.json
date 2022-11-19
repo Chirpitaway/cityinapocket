@@ -1,0 +1,27 @@
+{
+  "name": "city_in_pocket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "colors": "^1.4.0",
+    "concurrently": "^7.5.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.2",
+    "nodemon": "^2.0.20",
+    "packages": "^0.0.8"
+  }
+}
