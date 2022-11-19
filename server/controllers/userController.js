@@ -14,8 +14,8 @@ const RegisterUser = asyncHandler(async (req, res) => {
   //create user
   try {
     // Try to see if the user already exists
-    const user = await User.findOne({ email: email });
-    if (user) {
+    const userExists = await User.findOne({ email: email });
+    if (userExists) {
       res.status(400);
       throw new Error("User already exists");
     } else {
@@ -81,8 +81,8 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
   //create user
   try {
     // Try to see if the user already exists
-    const user = await User.findOne({ email: email });
-    if (user) {
+    const userExists = await User.findOne({ email: email });
+    if (userExists) {
       res.status(400);
       throw new Error("User already exists");
     } else {
@@ -109,7 +109,7 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
 const EditUser = asyncHandler(async (req, res) => {
   const { name, email, city } = req.body;
   try {
-    const user = await User.findById(req.user._id);
+    let user = await User.findById(req.user._id);
     if (user) {
       user.name = name || user.name;
       user.email = email || user.email;
@@ -129,7 +129,7 @@ const EditUser = asyncHandler(async (req, res) => {
 const EditOwnUser = asyncHandler(async (req, res) => {
   const { name, email, city } = req.body;
   try {
-    const user = await User.findById(req.user._id);
+    let user = await User.findById(req.user._id);
     if (user) {
       user.name = name || user.name;
       user.email = email || user.email;
