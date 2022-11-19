@@ -18,6 +18,7 @@ const ProvidersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  tags: [String],
   comments: [String],
   users: [String],
 });
