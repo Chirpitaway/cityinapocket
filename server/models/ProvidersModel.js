@@ -10,10 +10,7 @@ const ProvidersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  ticketTypes: [{
-    type: String,
-    required: true,
-  }],
+  ticketTypes: [String],
   city: {
     type: String,
     required: true,
