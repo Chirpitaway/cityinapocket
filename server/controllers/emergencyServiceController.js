@@ -6,9 +6,9 @@ const AddEmergencyService = asyncHandler(async (req, res) => {
 
     try {
         // Try to see if the emergency service already exists
-        const emergencyService = await EmergencyServices.findOne({ name: name, contact: contact, city: city, country: country });
+        const emergencyServiceExists = await EmergencyServices.findOne({ name: name, contact: contact, city: city, country: country });
 
-        if (emergencyService) {
+        if (emergencyServiceExists) {
             res.status(400);
             throw new Error("Emergency service already exists");
         } else {
@@ -36,7 +36,7 @@ const AddEmergencyService = asyncHandler(async (req, res) => {
 const GetEmergencyServices = asyncHandler(async (req, res) => {
     try {
         const query = req.query;
-        const emergencyServices = await EmergencyServices.find({query});
+        const emergencyServices = await EmergencyServices.find({ query });
         res.status(200).json(emergencyServices);
     } catch (error) {
         res.status(500);
@@ -48,7 +48,7 @@ const EditEmergencyService = asyncHandler(async (req, res) => {
     const { name, contact, city, country } = req.body;
 
     try {
-        const emergencyService = await EmergencyServices.findById(req.params.id);
+        let emergencyService = await EmergencyServices.findById(req.params.id);
 
         if (emergencyService) {
             emergencyService.name = name || emergencyService.name;
