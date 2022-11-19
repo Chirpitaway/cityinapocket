@@ -72,7 +72,7 @@ const DeleteComment = asyncHandler(async (req, res) => {
                 if (provider.comments.id(req.params.commentId).userId == req.user._id || req.user.permission == 'admin') {
                     provider.comments.id(req.params.commentId).remove();
                     await provider.save();
-                    res.status(201).json(provider);
+                    res.status(201).json({message:'User has been deleted'});
                 } else {
                     res.status(401);
                     throw new Error('Not authorized');
