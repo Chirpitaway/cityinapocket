@@ -38,7 +38,7 @@ const GetProviders = asyncHandler(async (req, res) => {
 
 const GetProvider = asyncHandler(async (req, res) => {
     try {
-        const provider = await Provider.findById(req.params.id);
+        const provider = await Provider.findById(req.params.id, 'name type city tags comments ticketTypes');
         
         if (provider) {
             res.status(200).json(provider);
@@ -51,3 +51,4 @@ const GetProvider = asyncHandler(async (req, res) => {
         throw new Error("Error getting provider");
     }
 });
+
