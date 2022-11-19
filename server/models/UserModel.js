@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema({
     type:String,
     required:true,
   },
+  permission:{
+    type:String,
+    default:0,
+  },
   tickets: [String],
 });
 module.exports = mongoose.model("User", userSchema);
