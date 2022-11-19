@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/UserModel");
 
-const protect = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (permission, req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
@@ -15,7 +15,12 @@ const protect = asyncHandler(async (req, res, next) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       //get user from token
       req.user = await User.findById(decoded.id).select("-password");
-      next();
+      if (req.user.permission !== permission) {
+        res.status(401);
+        throw new Error("Not authorized");
+      } else {
+        next();
+      }
     } catch (error) {
       console.log(error);
       res.status(401);
