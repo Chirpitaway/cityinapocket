@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
   res.json({ message: "hello" });
 });
 app.use("/api/v1/users", require("./routes/userRoutes"));
+app.use("/api/v1/cities", require("./routes/cityRoutes"));
 if (process.env.NODE_ENV === "production") {
   //Set build folder as static
   app.use(express.static(path.join(__dirname, "/frontend/build")));
