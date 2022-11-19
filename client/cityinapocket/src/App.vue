@@ -22,4 +22,6 @@ body, html
   font-family: 'Quicksand', sans-serif
   margin: 0
   width: 100vw
+  min-height: 100vh
+  background: linear-gradient(192.13deg, rgba(255, 251, 125, 0.7826) 0.54%, rgba(133, 255, 189, 0.86) 100%)
 </style>
