@@ -38,6 +38,7 @@ const AddTicket = asyncHandler(async (req, res) => {
             throw new Error('Provider not found');
         }
     } catch (error) {
+        console.log(error)
         res.status(500);
         throw new Error("Error adding ticket");
     }
