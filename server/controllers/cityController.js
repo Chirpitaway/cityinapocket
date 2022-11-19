@@ -46,3 +46,19 @@ const GetCities = asyncHandler(async (req, res) => {
         throw new Error("Error getting cities");
     }
 });
+
+const GetCity = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    try {
+        const city = await City.findById(id);
+        if (city) {
+            res.status(200).json(city);
+        } else {
+            res.status(404);
+            throw new Error("City not found");
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error getting city");
+    }
+});
