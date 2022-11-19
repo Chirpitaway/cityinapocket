@@ -23,6 +23,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
         email: email,
         name: name,
         password: hashedPassword,
+        city: city
       });
 
       res.status(201).json({
@@ -69,5 +70,42 @@ const GetUsers = asyncHandler(async (req, res) => {
     throw new Error("Error getting users");
   }
 });
+
+const RegisterSpecial = asyncHandler(async (req, res) => {
+  const { email, name, password, city } = req.body;
+
+  //Hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  //create user
+  try{
+    // Try to see if the user already exists
+    const user = await User.findOne({ email: email });
+    if (user) {
+      res.status(400);
+      throw new Error("User already exists");
+    } else {
+      const user = await User.create({
+        email: email,
+        name: name,
+        password: hashedPassword,
+        city: city,
+        permission: 'validator'
+      });
+
+      res.status(201).json({
+        _id: user.id,
+        name: name,
+        token: generateToken(user._id),
+      });
+    }
+  } catch (error) {
+    res.status(500);
+    throw new Error("Error creating user");
+  }
+});
+
+
 
 module.exports = { RegisterUser, LogInUser };
