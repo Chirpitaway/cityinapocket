@@ -1,11 +1,12 @@
 const asyncHandler = require('express-async-handler');
 const Ticket = require('../models/TicketsModel');
+const Provider = require('../models/ProviderModel');
 
 const AddTicket = asyncHandler(async (req, res) => {
-    const { type, userId, provider } = req.body;
+    const { type, userId, providerId } = req.body;
 
     try {
-        const provider = await Provider.findById(provider);
+        const provider = await Provider.findById(providerId);
         let ticketType
 
         if (provider) {
@@ -39,6 +40,16 @@ const AddTicket = asyncHandler(async (req, res) => {
     } catch (error) {
         res.status(500);
         throw new Error("Error adding ticket");
+    }
+});
+
+const GetTickets = asyncHandler(async (req, res) => {
+    try {
+        const tickets = await Ticket.find({ userId: req.user._id });
+        res.status(200).json(tickets);
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error getting tickets");
     }
 });
 
