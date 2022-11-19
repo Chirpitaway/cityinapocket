@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const ticketTypesSchema = mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-      ref: "TicketTypes",
-    },
+  name: {
+    type: String,
+    required: true,
+    ref: "TicketTypes",
+  },
   price: {
     type: Number,
     required: true,
@@ -13,9 +13,9 @@ const ticketTypesSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  duration:{
-    type:String,
-    required:true,
+  // Duration can be unlimited or limited to a specific number of days
+  duration: {
+    type: String,
   },
   provider: {
     type: String,
