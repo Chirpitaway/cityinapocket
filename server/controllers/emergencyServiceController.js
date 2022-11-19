@@ -55,6 +55,8 @@ const EditEmergencyService = asyncHandler(async (req, res) => {
             emergencyService.contact = contact || emergencyService.contact;
             emergencyService.city = city || emergencyService.city;
             emergencyService.country = country || emergencyService.country;
+            const updatedEmergencyService = await emergencyService.save();
+            res.status(200).json(updatedEmergencyService);
         } else {
             res.status(404);
             throw new Error("Emergency service not found");
@@ -65,3 +67,19 @@ const EditEmergencyService = asyncHandler(async (req, res) => {
     }
 });
 
+const DeleteEmergencyService = asyncHandler(async (req, res) => {
+    try {
+        const emergencyService = await EmergencyServices.findById(req.params.id);
+
+        if (emergencyService) {
+            await emergencyService.remove();
+            res.json({ message: "Emergency service removed" });
+        } else {
+            res.status(404);
+            throw new Error("Emergency service not found");
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error deleting emergency service");
+    }
+});
