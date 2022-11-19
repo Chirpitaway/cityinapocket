@@ -25,4 +25,14 @@ const {
 router.route("/:id/comments").post(protect, validateComment, AddComment);
 router.route("/:id/comments/:commentId").put(protect, validateCommentEdit, EditComment).delete(protect, DeleteComment);
 
+const {validateTicketType, validateTicketTypeEdit} = require("../middleware/validators/ticketTypeValidator");
+const {
+    AddTicketType,
+    EditTicketType,
+    DeleteTicketType,
+} = require("../controllers/ticketTypeController");
+
+router.route("/:id/ticket-types").post(admin, validateTicketType, AddTicketType);
+router.route("/:id/ticket-types/:ticketTypeId").put(admin, validateTicketTypeEdit, EditTicketType).delete(admin, DeleteTicketType);
+
 module.exports = router;
