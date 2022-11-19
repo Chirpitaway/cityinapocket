@@ -53,3 +53,12 @@ const GetTickets = asyncHandler(async (req, res) => {
     }
 });
 
+const GetAllTickets = asyncHandler(async (req, res) => {
+    try {
+        const tickets = await Ticket.find({});
+        res.status(200).json(tickets);
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error getting tickets");
+    }
+});
