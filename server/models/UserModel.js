@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema({
     lng: Number,
     city: String,
   },
+  city:{
+    type:String,
+    required:true,
+  },
   tickets: [String],
 });
 module.exports = mongoose.model("User", userSchema);
