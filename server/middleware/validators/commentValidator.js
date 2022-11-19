@@ -4,7 +4,6 @@ const asyncHandler = require('express-async-handler');
 module.exports = {
     validateComment: asyncHandler(async (req, res, next) => {
         const schema = joi.object({
-            userName: joi.string().required(),
             message: joi.string().required(),
             rating: joi.number()
         });
@@ -18,7 +17,6 @@ module.exports = {
     }),
     validateCommentEdit: asyncHandler(async (req, res, next) => {
         const schema = joi.object({
-            userName: joi.string(),
             message: joi.string(),
             rating: joi.number()
         });

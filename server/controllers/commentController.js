@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Provider = require('../models/ProvidersModel');
 
 const AddComment = asyncHandler(async (req, res) => {
-    const { userName, message, rating } = req.body;
+    const { message, rating } = req.body;
     
     try {
         const provider = await Provider.findById(req.params.id);
@@ -10,7 +10,7 @@ const AddComment = asyncHandler(async (req, res) => {
         if (provider) {
             const comment = {
                 userId: req.user._id,
-                userName: userName,
+                userName: req.user.name,
                 message: message,
                 rating: rating,
             };
@@ -28,7 +28,7 @@ const AddComment = asyncHandler(async (req, res) => {
 });
 
 const EditComment = asyncHandler(async (req, res) => {
-    const { userName, message, rating } = req.body;
+    const { message, rating } = req.body;
     
     try {
         const provider = await Provider.findById(req.params.id);
@@ -36,7 +36,7 @@ const EditComment = asyncHandler(async (req, res) => {
         if (provider) {
             const comment = {
                 userId: req.user._id,
-                userName: userName,
+                userName: req.user.name,
                 message: message,
                 rating: rating,
             };
