@@ -1,20 +1,17 @@
 const mongoose = require("mongoose");
-const  EmergencyServicesSchema = mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
-    ref: "EmergencyServices",
-  },
+const EmergencyServicesSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-
   contact: {
     type: String,
     required: true,
   },
   city: {
+    type: string,
+  },
+  country: {
     type: string,
     required: true,
   },
