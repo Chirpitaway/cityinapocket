@@ -3,7 +3,7 @@ const Ticket = require('../models/TicketsModel');
 const Provider = require('../models/ProviderModel');
 
 const AddTicket = asyncHandler(async (req, res) => {
-    const { type, userId, providerId } = req.body;
+    const { type, providerId } = req.body;
 
     try {
         const provider = await Provider.findById(providerId);
@@ -22,7 +22,7 @@ const AddTicket = asyncHandler(async (req, res) => {
                 } else {
                     const newTicket = await Ticket.create({
                         type: type,
-                        userId: userId,
+                        userId: req.user._id,
                         provider: provider,
                         // Add the ticket type duration (in days) to the current time
                         expiresAt: new Date(Date.now() + (ticketType.duration * 24 * 60 * 60 * 1000)),
