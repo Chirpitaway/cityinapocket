@@ -40,17 +40,33 @@ const RegisterUser = asyncHandler(async (req, res) => {
 // Login user
 const LogInUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email: email });
-  //check user and passwords match
-  if (user && (await bcrypt.compare(password, user.password))) {
-    res.status(200).json({
-      _id: user.id,
-      name: user.name,
-      token: generateToken(user._id)
-    });
-  } else {
-    res.status(401);
-    throw new Error("Invalid credentials");
+  try{
+    const user = await User.findOne({ email: email });
+    //check user and passwords match
+    if (user && (await bcrypt.compare(password, user.password))) {
+      res.status(200).json({
+        _id: user.id,
+        name: user.name,
+        token: generateToken(user._id)
+      });
+    } else {
+      res.status(401);
+      throw new Error("Invalid credentials");
+    }
+  } catch (error) {
+    res.status(500);
+    throw new Error("Error logging in user");
+  }
+});
+
+// Get list of all users
+const GetUsers = asyncHandler(async (req, res) => {
+  try{
+    const users = await User.find({});
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500);
+    throw new Error("Error getting users");
   }
 });
 
