@@ -108,6 +108,7 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
 
 const EditUser = asyncHandler(async (req, res) => {
   const { name, email, city } = req.body;
+  console.log(req.body)
   try {
     let user = await User.findById(req.user._id);
     if (user) {
@@ -121,6 +122,7 @@ const EditUser = asyncHandler(async (req, res) => {
       throw new Error("User not found");
     }
   } catch (error) {
+    console.log(error)
     res.status(500);
     throw new Error("Error updating user");
   }

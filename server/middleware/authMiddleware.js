@@ -15,7 +15,9 @@ const protect = asyncHandler(async (req, res, next) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       //get user from token
       req.user = await User.findById(decoded.id).select("-password");
-      if (req.user.permission !== 'user' || req.user.permission !== 'admin') {
+      console.log(req.user)
+      if (req.user.permission !== 'user' && req.user.permission !== 'admin') {
+
         res.status(401);
         throw new Error("Not authorized");
       } else {
