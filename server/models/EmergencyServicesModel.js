@@ -9,10 +9,10 @@ const EmergencyServicesSchema = mongoose.Schema({
     required: true,
   },
   city: {
-    type: string,
+    type: String,
   },
   country: {
-    type: string,
+    type: String,
     required: true,
   },
 }, { timestamps: true });
