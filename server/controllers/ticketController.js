@@ -62,3 +62,29 @@ const GetAllTickets = asyncHandler(async (req, res) => {
         throw new Error("Error getting tickets");
     }
 });
+
+const ValidateTicket = asyncHandler(async (req, res) => {
+    const { ticketId } = req.body;
+
+    try {
+        let ticket = await Ticket.findById(ticketId);
+
+        if (ticket) {
+            // Check if the ticket is expired
+            if (ticket.expiresAt > Date.now()) {
+                ticket.used = true;
+                await ticket.save();
+                res.status(200).json({ valid: true });
+            } else {
+                res.status(400);
+                throw new Error('Ticket expired');
+            }
+        } else {
+            res.status(404);
+            throw new Error('Ticket not found');
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error validating ticket");
+    }
+});
