@@ -32,3 +32,15 @@ const AddEmergencyService = asyncHandler(async (req, res) => {
         throw new Error("Error creating emergency service");
     }
 });
+
+const GetEmergencyServices = asyncHandler(async (req, res) => {
+    try {
+        const query = req.query;
+        const emergencyServices = await EmergencyServices.find({query});
+        res.status(200).json(emergencyServices);
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error getting emergency services");
+    }
+});
+
