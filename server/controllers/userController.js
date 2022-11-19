@@ -12,7 +12,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   //create user
-  try{
+  try {
     // Try to see if the user already exists
     const user = await User.findOne({ email: email });
     if (user) {
@@ -23,7 +23,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
         email: email,
         name: name,
         password: hashedPassword,
-        city: city
+        city: city,
       });
 
       res.status(201).json({
@@ -41,14 +41,14 @@ const RegisterUser = asyncHandler(async (req, res) => {
 // Login user
 const LogInUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  try{
+  try {
     const user = await User.findOne({ email: email });
     //check user and passwords match
     if (user && (await bcrypt.compare(password, user.password))) {
       res.status(200).json({
         _id: user.id,
         name: user.name,
-        token: generateToken(user._id)
+        token: generateToken(user._id),
       });
     } else {
       res.status(401);
@@ -62,7 +62,7 @@ const LogInUser = asyncHandler(async (req, res) => {
 
 // Get list of all users
 const GetUsers = asyncHandler(async (req, res) => {
-  try{
+  try {
     const users = await User.find({});
     res.status(200).json(users);
   } catch (error) {
@@ -79,7 +79,7 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   //create user
-  try{
+  try {
     // Try to see if the user already exists
     const user = await User.findOne({ email: email });
     if (user) {
@@ -91,7 +91,7 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
         name: name,
         password: hashedPassword,
         city: city,
-        permission: 'validator'
+        permission: "validator",
       });
 
       res.status(201).json({
@@ -105,7 +105,5 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
     throw new Error("Error creating user");
   }
 });
-
-
 
 module.exports = { RegisterUser, LogInUser };
