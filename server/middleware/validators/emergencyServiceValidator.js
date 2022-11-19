@@ -2,13 +2,12 @@ const joi = require('joi');
 const asyncHandler = require('express-async-handler');
 
 module.exports = {
-    validateCity: asyncHandler(async (req, res, next) => {
+    validateEmergencyService: asyncHandler(async (req, res, next) => {
         const schema = joi.object({
             name: joi.string().required(),
-            country: joi.string().required(),
-            centerLat: joi.number().required(),
-            centerLng: joi.number().required(),
-            radius: joi.number().required()
+            contact: joi.string().required(),
+            city: joi.string().required(),
+            country: joi.string().required()
         });
         const { error } = schema.validate(req.body);
         if (error) {
@@ -18,13 +17,12 @@ module.exports = {
             next();
         }
     }),
-    validateCityEdit: asyncHandler(async (req, res, next) => {
+    validateEmergencyServiceEdit: asyncHandler(async (req, res, next) => {
         const schema = joi.object({
             name: joi.string(),
-            country: joi.string(),
-            centerLat: joi.number(),
-            centerLng: joi.number(),
-            radius: joi.number()
+            contact: joi.string(),
+            city: joi.string(),
+            country: joi.string()
         });
         const { error } = schema.validate(req.body);
         if (error) {

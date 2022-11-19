@@ -32,9 +32,9 @@ module.exports = {
     }),
     validateEditUser: asyncHandler(async (req, res, next) => {
         const schema = joi.object({
-            name: joi.string().required(),
-            email: joi.string().email().required(),
-            city: joi.string().required()
+            name: joi.string(),
+            email: joi.string().email(),
+            city: joi.string()
         });
         const { error } = schema.validate(req.body);
         if (error) {
