@@ -30,6 +30,10 @@ const TicketType = mongoose.Schema({
     type: Number,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
   // Duration can be unlimited or limited to a specific number of days
   duration: {
     type: String,
