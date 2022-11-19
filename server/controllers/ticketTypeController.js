@@ -5,7 +5,7 @@ const AddTicketType = asyncHandler(async (req, res) => {
     const { name, price, description } = req.body;
 
     try {
-        const provider = await Provider.findById(req.params.id);
+        let provider = await Provider.findById(req.params.id);
 
         if (provider) {
             const ticketType = {
@@ -15,7 +15,17 @@ const AddTicketType = asyncHandler(async (req, res) => {
             };
             provider.ticketTypes.push(ticketType);
             await provider.save();
-            res.status(201).json(provider);
+            const ticketTypeId = provider.ticketTypes[provider.ticketTypes.length - 1]._id;
+            const blob = bucket.file(`${provider._id}-${ticketTypeId}.${req.file.mimetype.split('/')[1]}`);
+            const blobStream = blob.createWriteStream()
+            blobStream.on('finish', async () => {
+                res.status(201).json(provider);
+            })
+            blobStream.on('error', (err) => {
+                res.status(500);
+                throw new Error("Error creating provider");
+            })
+            blobStream.end(req.file.buffer)
         } else {
             res.status(404);
             throw new Error('Provider not found');

@@ -24,7 +24,7 @@ const AddProvider = asyncHandler(async (req, res) => {
                 res.status(201).json(provider);
             })
             blobStream.on('error', (err) => {
-                res.status(400);
+                res.status(500);
                 throw new Error("Error creating provider");
             })
             blobStream.end(req.file.buffer)
