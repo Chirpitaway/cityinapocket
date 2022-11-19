@@ -79,3 +79,9 @@ const DeleteTicketType = asyncHandler(async (req, res) => {
         throw new Error("Error deleting ticket type");
     }
 });
+
+module.exports = {
+    AddTicketType,
+    EditTicketType,
+    DeleteTicketType,
+};
