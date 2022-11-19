@@ -85,3 +85,20 @@ const EditCity = asyncHandler(async (req, res) => {
         throw new Error("Error updating city");
     }
 });
+
+const DeleteCity = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    try {
+        const city = await City.findById(id);
+        if (city) {
+            await city.remove();
+            res.status(200).json({ message: "City removed" });
+        } else {
+            res.status(404);
+            throw new Error("City not found");
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error deleting city");
+    }
+});
