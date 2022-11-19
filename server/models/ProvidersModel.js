@@ -47,11 +47,11 @@ const ProvidersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  ticketTypes: [TicketType],
   city: {
     type: String,
     required: true,
   },
+  ticketTypes: [TicketType],
   tags: [String],
   comments: [Comment],
   users: [String],
