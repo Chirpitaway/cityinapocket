@@ -88,3 +88,22 @@ const ValidateTicket = asyncHandler(async (req, res) => {
         throw new Error("Error validating ticket");
     }
 });
+
+const DeleteTicket = asyncHandler(async (req, res) => {
+    const { ticketId } = req.body;
+
+    try {
+        const ticket = await Ticket.findById(ticketId);
+
+        if (ticket) {
+            await ticket.remove();
+            res.status(200).json({ message: 'Ticket removed' });
+        } else {
+            res.status(404);
+            throw new Error('Ticket not found');
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error deleting ticket");
+    }
+});
