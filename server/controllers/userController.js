@@ -42,8 +42,8 @@ const RegisterUser = asyncHandler(async (req, res) => {
 const LogInUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email: email });
     try {
+      const user = await User.findOne({ email: email });
       //check user and passwords match
       if (user && (await bcrypt.compare(password, user.password))) {
         res.status(200).json({
