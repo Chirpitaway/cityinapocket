@@ -28,3 +28,15 @@ const AddTag = asyncHandler(async (req, res) => {
         throw new Error('Error creating tag');
     }
 });
+
+const GetTags = asyncHandler(async (req, res) => {
+    try {
+        const query = req.query;
+        const tags = await Tag.find(query);
+        res.status(200).json(tags);
+    } catch (error) {
+        res.status(500);
+        throw new Error('Error getting tags');
+    }
+});
+
