@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Ticket = require('../models/TicketsModel');
-const Provider = require('../models/ProviderModel');
+const Provider = require('../models/ProvidersModel');
 
 const AddTicket = asyncHandler(async (req, res) => {
     const { type, providerId } = req.body;
