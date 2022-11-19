@@ -107,3 +107,11 @@ const DeleteTicket = asyncHandler(async (req, res) => {
         throw new Error("Error deleting ticket");
     }
 });
+
+module.exports = {
+    AddTicket,
+    GetTickets,
+    GetAllTickets,
+    ValidateTicket,
+    DeleteTicket
+}
