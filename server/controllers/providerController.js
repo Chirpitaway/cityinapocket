@@ -35,3 +35,19 @@ const GetProviders = asyncHandler(async (req, res) => {
         throw new Error("Error getting providers");
     }
 });
+
+const GetProvider = asyncHandler(async (req, res) => {
+    try {
+        const provider = await Provider.findById(req.params.id);
+        
+        if (provider) {
+            res.status(200).json(provider);
+        } else {
+            res.status(404);
+            throw new Error('Provider not found');
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error getting provider");
+    }
+});
