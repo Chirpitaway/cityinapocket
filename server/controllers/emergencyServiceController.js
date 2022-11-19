@@ -83,3 +83,10 @@ const DeleteEmergencyService = asyncHandler(async (req, res) => {
         throw new Error("Error deleting emergency service");
     }
 });
+
+module.exports = {
+    AddEmergencyService,
+    GetEmergencyServices,
+    EditEmergencyService,
+    DeleteEmergencyService,
+};

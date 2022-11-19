@@ -102,3 +102,11 @@ const DeleteCity = asyncHandler(async (req, res) => {
         throw new Error("Error deleting city");
     }
 });
+
+module.exports = {
+    AddCity,
+    GetCities,
+    GetCity,
+    EditCity,
+    DeleteCity,
+};
