@@ -6,7 +6,7 @@ module.exports = {
         const schema = joi.object({
             userName: joi.string().required(),
             message: joi.string().required(),
-            rating: joi.number().required()
+            rating: joi.number()
         });
         const { error } = schema.validate(req.body);
         if (error) {
