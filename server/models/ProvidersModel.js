@@ -18,10 +18,7 @@ const ProvidersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  comments:{
-    type:String,
-    required:true,
-  },
-  users:{}
+  comments:[String],
+  users: [String],
 });
 module.exports = mongoose.model("Providers", ProvidersSchema);
