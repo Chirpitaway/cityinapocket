@@ -44,3 +44,24 @@ const GetEmergencyServices = asyncHandler(async (req, res) => {
     }
 });
 
+const EditEmergencyService = asyncHandler(async (req, res) => {
+    const { name, contact, city, country } = req.body;
+
+    try {
+        const emergencyService = await EmergencyServices.findById(req.params.id);
+
+        if (emergencyService) {
+            emergencyService.name = name || emergencyService.name;
+            emergencyService.contact = contact || emergencyService.contact;
+            emergencyService.city = city || emergencyService.city;
+            emergencyService.country = country || emergencyService.country;
+        } else {
+            res.status(404);
+            throw new Error("Emergency service not found");
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error editing emergency service");
+    }
+});
+
