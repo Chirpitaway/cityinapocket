@@ -6,9 +6,9 @@ const AddTag = asyncHandler(async (req, res) => {
 
     try {
         // Try to see if the tag already exists
-        const tag = await Tag.findOne({ name: name, type: type });
-        
-        if (tag) {
+        const tagExists = await Tag.findOne({ name: name, type: type });
+
+        if (tagExists) {
             res.status(400);
             throw new Error('Tag already exists');
         } else {
@@ -44,7 +44,7 @@ const EditTag = asyncHandler(async (req, res) => {
     const { name, type } = req.body;
 
     try {
-        const tag = await Tag.findById(req.params.id);
+        let tag = await Tag.findById(req.params.id);
 
         if (tag) {
             tag.name = name || tag.name;
