@@ -60,4 +60,4 @@ const ProvidersSchema = mongoose.Schema({
   comments: [Comment],
   users: [String],
 });
-module.exports = mongoose.model("Providers", ProvidersSchema);
+module.exports = mongoose.model("Provider", ProvidersSchema);

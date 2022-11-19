@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const Provider = require('../models/ProviderModel');
+const Provider = require('../models/ProvidersModel');
 const bucket = require('../helpers/bucket');
 
 const AddProvider = asyncHandler(async (req, res) => {
