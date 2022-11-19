@@ -62,3 +62,26 @@ const GetCity = asyncHandler(async (req, res) => {
         throw new Error("Error getting city");
     }
 });
+
+const EditCity = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const { name, centerLat, centerLng, radius, country } = req.body;
+    try {
+        const city = await City.findById(id);
+        if (city) {
+            city.name = name || city.name;
+            city.centerLat = centerLat || city.centerLat;
+            city.centerLng = centerLng || city.centerLng;
+            city.radius = radius || city.radius;
+            city.country = country || city.country;
+            const updatedCity = await city.save();
+            res.status(200).json(updatedCity);
+        } else {
+            res.status(404);
+            throw new Error("City not found");
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error updating city");
+    }
+});
