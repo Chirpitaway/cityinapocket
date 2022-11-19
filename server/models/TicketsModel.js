@@ -3,7 +3,7 @@ const ticketsSchema = mongoose.Schema({
   type: {
     type: String,
     required: true,
-    ref: "City",
+    ref: "Tickets",
   },
  userId: {
     type:String,
