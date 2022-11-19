@@ -5,11 +5,15 @@ const citySchema = mongoose.Schema({
     required: true,
     ref: "City",
   },
-  maxLat: {
+  centerLat: {
     type: Number,
     required: true,
   },
-  maxLng: {
+  centerLng: {
+    type: Number,
+    required: true,
+  },
+  radius: {
     type: Number,
     required: true,
   },
