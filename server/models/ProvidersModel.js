@@ -1,4 +1,25 @@
 const mongoose = require("mongoose");
+
+const Comment = mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+    ref: "Comments",
+  },
+  userName: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+  // If no rating, then it's a comment, if there is a rating, then it's a review
+  rating: {
+    type: Number,
+  },
+});
+
 const ProvidersSchema = mongoose.Schema({
   name: {
     type: String,
@@ -16,7 +37,7 @@ const ProvidersSchema = mongoose.Schema({
     required: true,
   },
   tags: [String],
-  comments: [String],
+  comments: [Comment],
   users: [String],
 });
 module.exports = mongoose.model("Providers", ProvidersSchema);
