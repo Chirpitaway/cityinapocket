@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const User = require("../models/UserModel");
+const City = require("../models/CityModel");
 
 const AddCity = asyncHandler(async (req, res) => {
     const { name, centerLat, centerLng, radius, country } = req.body;
