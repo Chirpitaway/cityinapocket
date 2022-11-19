@@ -19,13 +19,14 @@ const userSchema = mongoose.Schema({
     lng: Number,
     city: String,
   },
-  city:{
-    type:String,
-    required:true,
+  city: {
+    type: String,
+    required: true,
   },
-  permission:{
-    type:String,
-    default:0,
+  //Permission = user, admin, validator
+  permission: {
+    type: String,
+    default: 'user',
   },
   tickets: [String],
 });
