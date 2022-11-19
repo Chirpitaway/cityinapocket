@@ -17,6 +17,8 @@ header
     align-items: center
     padding: 0 5vw
     height: 10vh
+    width: 100vw
+    box-sizing: border-box
 
     .language-select
         display: flex
