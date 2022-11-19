@@ -106,4 +106,25 @@ const RegisterSpecial = asyncHandler(async (req, res) => {
   }
 });
 
+const EditUser = asyncHandler(async (req, res) => {
+  const { name, email, city } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    if (user) {
+      user.name = name || user.name;
+      user.email = email || user.email;
+      user.city = city || user.city;
+      const updatedUser = await user.save();
+      res.status(200).json(updatedUser);
+    } else {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    res.status(500);
+    throw new Error("Error updating user");
+  }
+});
+
+
 module.exports = { RegisterUser, LogInUser };
