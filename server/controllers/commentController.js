@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const Provider = require('../models/ProviderModel');
+const Provider = require('../models/ProvidersModel');
 
 const AddComment = asyncHandler(async (req, res) => {
     const { userName, message, rating } = req.body;

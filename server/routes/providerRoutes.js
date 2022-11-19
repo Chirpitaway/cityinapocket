@@ -15,4 +15,14 @@ router.route("/").post(admin, validateProvider, AddProvider).get(protect, GetPro
 router.route("/:id").get(protect, GetProvider).put(admin, validateProviderEdit, UpdateProvider).delete(admin, DeleteProvider);
 router.route("/details/:id").get(admin, GetProviderDetails);
 
+const { validateComment, validateCommentEdit } = require("../middleware/validators/commentValidator");
+const {
+    AddComment,
+    EditComment,
+    DeleteComment,
+} = require("../controllers/commentController");
+
+router.route("/:id/comments").post(protect, validateComment, AddComment);
+router.route("/:id/comments/:commentId").put(protect, validateCommentEdit, EditComment).delete(protect, DeleteComment);
+
 module.exports = router;
