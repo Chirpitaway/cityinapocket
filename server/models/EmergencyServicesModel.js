@@ -15,5 +15,5 @@ const EmergencyServicesSchema = mongoose.Schema({
     type: string,
     required: true,
   },
-});
+}, { timestamps: true });
 module.exports = mongoose.model("Emergency", EmergencyServicesSchema);

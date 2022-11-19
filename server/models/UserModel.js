@@ -29,5 +29,5 @@ const userSchema = mongoose.Schema({
     default: 'user',
   },
   tickets: [String],
-});
+}, { timestamps: true });
 module.exports = mongoose.model("User", userSchema);

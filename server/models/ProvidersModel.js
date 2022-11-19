@@ -18,7 +18,7 @@ const Comment = mongoose.Schema({
   rating: {
     type: Number,
   },
-});
+}, { timestamps: true });
 
 const TicketType = mongoose.Schema({
   name: {

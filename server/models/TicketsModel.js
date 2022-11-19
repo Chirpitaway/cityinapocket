@@ -26,5 +26,5 @@ const ticketsSchema = mongoose.Schema({
     type: Boolean,
     required: true,
   }
-});
+}, { timestamps: true });
 module.exports = mongoose.model("Tickets", ticketsSchema);
