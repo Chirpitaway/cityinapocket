@@ -5,21 +5,22 @@ const ticketsSchema = mongoose.Schema({
     required: true,
     ref: "Tickets",
   },
- userId: {
-    type:String,
+  userId: {
+    type: String,
     required: true,
   },
-  ExpiresAt: {
-    type:Date,
+  expiresAt: {
+    type: Date,
     required: true,
   },
   redeemedAt: {
     type: Date,
     required: true,
   },
-  used:{
-    type:Boolean,
-    required:true,
+  // Validated by the provider
+  used: {
+    type: Boolean,
+    required: true,
   }
 });
 module.exports = mongoose.model("Tickets", ticketsSchema);
