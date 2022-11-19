@@ -40,3 +40,23 @@ const GetTags = asyncHandler(async (req, res) => {
     }
 });
 
+const EditTag = asyncHandler(async (req, res) => {
+    const { name, type } = req.body;
+
+    try {
+        const tag = await Tag.findById(req.params.id);
+
+        if (tag) {
+            tag.name = name || tag.name;
+            tag.type = type || tag.type;
+            const updatedTag = await tag.save();
+            res.status(200).json(updatedTag);
+        } else {
+            res.status(404);
+            throw new Error('Tag not found');
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error('Error updating tag');
+    }
+});
