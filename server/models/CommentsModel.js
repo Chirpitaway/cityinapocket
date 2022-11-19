@@ -5,18 +5,17 @@ const CommentsSchema = mongoose.Schema({
     required: true,
     ref: "Comments",
   },
- providerId:{
-    type:String,
-    required:true,
- },
-
- message: {
+  providerId: {
     type: String,
     required: true,
   },
+  message: {
+    type: String,
+    required: true,
+  },
+  // If no rating, then it's a comment, if there is a rating, then it's a review
   rating: {
     type: Number,
-    required: true,
   },
 });
 module.exports = mongoose.model("Comments", CommentsSchema);
