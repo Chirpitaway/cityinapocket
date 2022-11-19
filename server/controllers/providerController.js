@@ -66,7 +66,7 @@ const GetProviderDetails = asyncHandler(async (req, res) => {
         res.status(500);
         throw new Error("Error getting provider details");
     }
-}
+});
 
 const UpdateProvider = asyncHandler(async (req, res) => {
     try {
@@ -87,5 +87,22 @@ const UpdateProvider = asyncHandler(async (req, res) => {
     } catch (error) {
         res.status(500);
         throw new Error("Error updating provider");
+    }
+});
+
+const DeleteProvider = asyncHandler(async (req, res) => {
+    try {
+        const provider = await Provider.findById(req.params.id);
+        
+        if (provider) {
+            await provider.remove();
+            res.status(200).json({ message: 'Provider removed' });
+        } else {
+            res.status(404);
+            throw new Error('Provider not found');
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error deleting provider");
     }
 });
