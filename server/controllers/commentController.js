@@ -90,3 +90,9 @@ const DeleteComment = asyncHandler(async (req, res) => {
         throw new Error("Error deleting comment");
     }
 });
+
+module.exports = {
+    AddComment,
+    EditComment,
+    DeleteComment,
+};
