@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/users", require("./routes/userRoutes"));
 app.use("/api/v1/cities", require("./routes/cityRoutes"));
 app.use("/api/v1/emergency-services", require("./routes/emergencyServiceRoutes"));
+app.use("/api/v1/tags", require("./routes/tagRoutes"));
 if (process.env.NODE_ENV === "production") {
   //Set build folder as static
   app.use(express.static(path.join(__dirname, "/frontend/build")));
