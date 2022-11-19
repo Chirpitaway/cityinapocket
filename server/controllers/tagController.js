@@ -77,3 +77,10 @@ const DeleteTag = asyncHandler(async (req, res) => {
         throw new Error('Error deleting tag');
     }
 });
+
+module.exports = {
+    AddTag,
+    GetTags,
+    EditTag,
+    DeleteTag,
+};
