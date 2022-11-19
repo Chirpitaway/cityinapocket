@@ -24,3 +24,14 @@ const AddProvider = asyncHandler(async (req, res) => {
         throw new Error("Error creating provider");
     }
 });
+
+const GetProviders = asyncHandler(async (req, res) => {
+    try {
+        let query = req.query;
+        const providers = await Provider.find({query});
+        res.status(200).json(providers);
+    } catch (error) {
+        res.status(500);
+        throw new Error("Error getting providers");
+    }
+});
