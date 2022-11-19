@@ -6,9 +6,9 @@ const AddCity = asyncHandler(async (req, res) => {
 
     try {
         // Try to see if the city already exists
-        const city = await City.findOne({ name: name, centerLat: centerLat, centerLng: centerLng });
+        const cityExists = await City.findOne({ name: name, centerLat: centerLat, centerLng: centerLng });
 
-        if (city) {
+        if (cityExists) {
             res.status(400);
             throw new Error("City already exists");
         }
@@ -67,7 +67,7 @@ const EditCity = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { name, centerLat, centerLng, radius, country } = req.body;
     try {
-        const city = await City.findById(id);
+        let city = await City.findById(id);
         if (city) {
             city.name = name || city.name;
             city.centerLat = centerLat || city.centerLat;
