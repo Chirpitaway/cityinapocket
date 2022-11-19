@@ -19,17 +19,21 @@ header
     height: 10vh
     width: 100vw
     box-sizing: border-box
+    color: #197D2F
 
     .language-select
         display: flex
         align-items: center
         cursor: pointer
+        transition: all 0.3s ease-in-out
+
+        &:hover
+            transform: scale(1.1)
 
         span
             margin-right: 1vw
             font-size: 1.5rem
             font-weight: 600
-            color: #000
 
         img
             width: 2rem
