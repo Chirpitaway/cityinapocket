@@ -8,6 +8,7 @@
     <tag-table class="my-15" />
     <provider-table class="my-15" />
     <emergency-service-table class="my-15" />
+    <city-table class="my-15" />
   </v-container>
 </template>
 
@@ -17,6 +18,7 @@ import TicketTable from "@/components/TicketManagement/TicketTable";
 import TagTable from "@/components/TagManagement/TagTable";
 import ProviderTable from "@/components/ProviderManagement/ProviderTable";
 import EmergencyServiceTable from "@/components/EmergencyServiceManagement/EmergencyServiceTable";
+import CityTable from "@/components/CityManagement/CityTable";
 export default {
   components: {
     UserTable,
@@ -24,6 +26,7 @@ export default {
     TagTable,
     ProviderTable,
     EmergencyServiceTable,
+    CityTable,
   },
 };
 </script>
