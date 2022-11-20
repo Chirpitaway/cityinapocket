@@ -1,9 +1,10 @@
 <template>
   <div class="container">
+    <span class="error">{{ errorMessage }}</span>
     <h1>Please enter your email and password</h1>
     <form>
-      <input type="text" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+      <input type="text" placeholder="Email" v-model="email" />
+      <input type="password" placeholder="Password" v-model="password" />
     </form>
     <custom-button
       :buttonText="'Next'"
@@ -30,18 +31,29 @@ export default {
     return {
       email: "",
       password: "",
+      errorMessage: "",
     };
   },
   methods: {
     async login() {
       try {
-        const response = await AuthenticationService.login(
-          this.email,
-          this.password
+        const response = await AuthenticationService.login({
+          email: this.email,
+          password: this.password,
+        });
+        localStorage.setItem("jwt", response.data.token);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            email: this.email,
+            name: response.data.name,
+            id: response.data._id,
+          })
         );
-        console.log(response.data);
+        this.$router.push("/home");
       } catch (error) {
         console.log(error.response.data);
+        this.errorMessage = error.response.data.message;
       }
     },
   },
@@ -95,4 +107,9 @@ export default {
         text-decoration: none
         &:hover
             text-decoration: underline
+    .error
+        color: red
+        font-size: 1rem
+        font-weight: bold
+        margin-bottom: 1rem
 </style>
