@@ -50,6 +50,7 @@ export default {
           email: this.email,
           name: response.data.name,
           id: response.data._id,
+          city: response.data.city,
         });
         this.$router.push("/home");
       } catch (error) {
