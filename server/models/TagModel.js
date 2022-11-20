@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const ProvidersSchema = mongoose.Schema({
+const TagSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -10,4 +10,4 @@ const ProvidersSchema = mongoose.Schema({
         required: true,
     }
 }, { timestamps: true });
-module.exports = mongoose.model("Providers", ProvidersSchema);
+module.exports = mongoose.model("Tags", TagSchema);

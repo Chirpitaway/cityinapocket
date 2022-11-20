@@ -3,7 +3,7 @@ const Ticket = require('../models/TicketsModel');
 const Provider = require('../models/ProvidersModel');
 
 const AddTicket = asyncHandler(async (req, res) => {
-    const { type, providerId } = req.body;
+    const { type, providerId ,expiresAt} = req.body;
 
     try {
         const provider = await Provider.findById(providerId);
@@ -14,7 +14,7 @@ const AddTicket = asyncHandler(async (req, res) => {
             if (provider.ticketTypes.id(type)) {
                 ticketType = provider.ticketTypes.id(type)
                 // Check if the ticket exists
-                const ticketExists = await Ticket.findOne({ type: type, userId: userId, provider: provider, expiresAt: expiresAt });
+                const ticketExists = await Ticket.findOne({ type: type, userId: req.user._id, provider: provider, expiresAt: Date.now()});
 
                 if (ticketExists) {
                     res.status(400);
@@ -38,6 +38,7 @@ const AddTicket = asyncHandler(async (req, res) => {
             throw new Error('Provider not found');
         }
     } catch (error) {
+        console.log(error)
         res.status(500);
         throw new Error("Error adding ticket");
     }
