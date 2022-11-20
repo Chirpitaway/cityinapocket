@@ -12,6 +12,8 @@
 
 <script>
 import provider from "../Provider";
+import ProviderService from "../../services/ProviderService";
+import { mapGetters } from "vuex";
 export default {
   components: {
     provider,
@@ -20,6 +22,20 @@ export default {
     return {
       providers: null,
     };
+  },
+  computed: {
+    ...mapGetters(["user"]),
+  },
+  async created() {
+    if (!this.user) {
+      this.$router.push("/");
+    }
+    const { data } = await ProviderService.getAllProviders({
+        city: this.user.city,
+        type: 'attraction'
+    }
+    );
+    this.providers = data;
   },
 };
 </script>

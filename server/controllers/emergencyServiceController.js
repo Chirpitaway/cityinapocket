@@ -36,7 +36,9 @@ const AddEmergencyService = asyncHandler(async (req, res) => {
 const GetEmergencyServices = asyncHandler(async (req, res) => {
     try {
         const query = req.query;
-        const emergencyServices = await EmergencyServices.find({ query });
+        console.log(query);
+        const emergencyServices = await EmergencyServices.find( query );
+        
         res.status(200).json(emergencyServices);
     } catch (error) {
         res.status(500);

@@ -38,7 +38,7 @@ const AddProvider = asyncHandler(async (req, res) => {
 const GetProviders = asyncHandler(async (req, res) => {
     try {
         let query = req.query;
-        const providers = await Provider.find({ query }, 'name type city tags');
+        const providers = await Provider.find( query , 'name type city tags');
         res.status(200).json(providers);
     } catch (error) {
         res.status(500);

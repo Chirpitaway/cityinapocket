@@ -30,6 +30,7 @@ export default {
     if (!this.user) {
       this.$router.push("/");
     }
+    console.log(this.user);
     const { data } = await EmergencyService.getAllEmergencies(
       this.user.city
     );
