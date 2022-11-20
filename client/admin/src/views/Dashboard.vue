@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="my-15" justify="center">
       <span class="text-h3 text-center blue--text"
-        >Dashboard administrare stocuri</span
+        >Dashboard administrare</span
       >
     </v-row>
     <v-row class="my-15" justify="center">
