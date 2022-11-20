@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <span class="error">{{ errorMessage }}</span>
-    <h1>Please enter your email and password</h1>
+    <h1>Please enter your details to register</h1>
     <form>
+      <input type="text" placeholder="Name" v-model="name" />
       <input type="text" placeholder="Email" v-model="email" />
       <input type="password" placeholder="Password" v-model="password" />
     </form>
@@ -13,15 +14,14 @@
       :isPrimary="true"
       @clicked="login"
     />
-    <router-link tag="a" to="/register"
-      >Don't have an account? Register</router-link
-    >
+    <router-link tag="a" to="/">Already have an account? Login</router-link>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import customButton from "@/components/General/Button";
 import AuthenticationService from "@/services/AuthenticationService";
+import axios from "axios";
 export default {
   name: "Login",
   components: {
@@ -29,17 +29,21 @@ export default {
   },
   data() {
     return {
+      name: "",
       email: "",
       password: "",
+      city: "",
       errorMessage: "",
     };
   },
   methods: {
     async login() {
       try {
-        const response = await AuthenticationService.login({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password,
+          name: this.name,
+          city: this.city,
         });
         localStorage.setItem("jwt", response.data.token);
         this.$store.commit("setUser", {
@@ -54,10 +58,24 @@ export default {
       }
     },
   },
+  async mounted() {
+    try {
+      const response = await axios.get("https://api.ipify.org/?format=json");
+      const ip = response.data.ip;
+      try {
+        const response = await axios.get(`http://ip-api.com/json/${ip}`);
+        this.city = response.data.city;
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 </script>
-
-<style lang="sass" scoped>
+  
+  <style lang="sass" scoped>
 .container
     width: 100vw
     min-height: 90vh

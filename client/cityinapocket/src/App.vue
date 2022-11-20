@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-header/>
-    <router-view/>
+    <transition name="fade">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -27,4 +29,9 @@ body, html
 :root
   --main-primary-color: #197D2F
   --main-text-color: #fff
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity .5s
+.fade-enter, .fade-leave-to
+  opacity: 0
 </style>
