@@ -6,5 +6,8 @@ export default {
     },
     getProvider (id) {
         return Api().get(`/providers/${id}`)
+    },
+    addComment (id, comment) {
+        return Api().post(`/providers/${id}/comments`, comment)
     }
 }

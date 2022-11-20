@@ -15,8 +15,8 @@
       <h5>{{ comment.message }}</h5>
     </div>
 
-    <textarea placeholder="Scrie un comentariu..."/>
-    <custom-button :buttonText="'Trimite!'" />
+    <textarea placeholder="Scrie un comentariu..." v-model="comment"/>
+    <custom-button :buttonText="'Trimite!'" @clicked="sendComment"/>
   </div>
 </template>
   
@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       provider: null,
+      comment: ''
     };
   },
   computed: {
@@ -44,6 +45,12 @@ export default {
     }
     const { data } = await ProviderService.getProvider(this.$route.params.id);
     this.provider = data;
+  },
+  methods: {
+    async sendComment() {
+      const { data } = await ProviderService.addComment(this.$route.params.id, this.comment);
+      this.provider = data;
+    }
   },
 };
 </script>
