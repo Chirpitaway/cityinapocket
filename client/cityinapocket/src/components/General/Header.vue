@@ -1,14 +1,32 @@
 <template>
-    <header>
-        <h1 class="logo">CityinaPocket</h1>
-        <div class="cta">
-            <div class="language-select">
-                <span>ENG</span>
-                <img src="@/assets/eng-flag.png" alt="English">
-            </div>
-        </div>
-    </header>
+  <header>
+    <h1 class="logo">CityinaPocket</h1>
+    <div class="cta">
+      <div class="language-select" v-if="!menuDisplay">
+        <span>ENG</span>
+        <img src="@/assets/eng-flag.png" alt="English" />
+      </div>
+      <Slide right :closeOnNavigation="true" v-else>
+        dsdfsdffsdfsd
+      </Slide>
+    </div>
+  </header>
 </template>
+
+<script>
+export default {
+  name: "Header",
+  computed: {
+    menuDisplay() {
+      return this.$route.path === "/" ||
+        this.$route.path === "/register" ||
+        this.$route.path === "/home"
+        ? false
+        : true;
+    },
+  },
+};
+</script>
 
 <style lang="sass" scoped>
 header

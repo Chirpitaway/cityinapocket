@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header/>
+    <app-header />
     <transition name="fade">
       <router-view />
     </transition>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import AppHeader from '@/components/General/Header'
+import AppHeader from "@/components/General/Header";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    AppHeader
-  }
-}
+    AppHeader,
+  },
+};
 </script>
 
 <style lang="sass">
@@ -34,4 +34,21 @@ body, html
   transition: opacity .5s
 .fade-enter, .fade-leave-to
   opacity: 0
+
+.bm-menu
+  background-color: var(--main-primary-color) !important
+.bm-cross
+  background: #fff !important
+  
+.bm-burger-button
+  z-index: 999
+  top: 2.5vh !important
+  width: 4vh !important
+  height: 4vh !important
+  position: fixed !important
+  right: 28px !important
+  .bm-burger-bars
+    background-color: var(--main-primary-color)
+    .line-style
+      height: 15%
 </style>

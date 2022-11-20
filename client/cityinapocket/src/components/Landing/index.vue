@@ -10,9 +10,9 @@
     </div>
     <h2>Let's see what you need</h2>
 
-    <custom-button :buttonText="'Food'" @clicked="goTo()" />
-    <custom-button :buttonText="'Transport'" @clicked="goTo()" />
-    <custom-button :buttonText="'Fun'" @clicked="goTo()" />
+    <custom-button :buttonText="'Food'" @clicked="goTo('/food')" />
+    <custom-button :buttonText="'Transport'" @clicked="goTo('/transport')" />
+    <custom-button :buttonText="'Fun'" @clicked="goTo('/fun')" />
   </div>
 </template>
   
@@ -21,7 +21,7 @@ import { mapGetters } from "vuex";
 import customButton from "@/components/General/Button";
 
 export default {
-  name: "Home",
+  name: "Landing",
   computed: {
     ...mapGetters(["user"]),
   },
@@ -34,8 +34,8 @@ export default {
     }
   },
   methods: {
-    goTo() {
-      this.$router.push("/landing");
+    goTo(route) {
+      this.$router.push(route);
     },
   },
 };
