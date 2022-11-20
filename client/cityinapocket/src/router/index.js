@@ -9,6 +9,7 @@ import Attractions from '../views/AttractionsView.vue'
 import Profile from '../views/ProfileView.vue'
 import Restaurants from '../views/RestaurantsView.vue'
 import Transportations from '../views/TransportationsView.vue'
+import Provider from '../views/ProviderView.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes = [
     path: '/transportations',
     name: 'transportations',
     component: Transportations
+  },
+  {
+    path: '/provider/:id',
+    name: 'provider',
+    component: Provider
   }
 ]
 

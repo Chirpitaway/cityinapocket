@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import provider from "./Provider";
+import provider from "../General/Provider";
 import ProviderService from "../../services/ProviderService";
 import { mapGetters } from "vuex";
 export default {
