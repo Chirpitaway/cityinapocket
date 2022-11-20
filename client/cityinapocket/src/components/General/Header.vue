@@ -7,7 +7,15 @@
         <img src="@/assets/eng-flag.png" alt="English" />
       </div>
       <Slide right :closeOnNavigation="true" v-else>
-        dsdfsdffsdfsd
+        <nav>
+            <h2>Menu</h2>
+
+            <span>How we go</span>
+            <span>Where we eat</span>
+            <span>What we visit</span>
+            <span>News</span>
+            <span>Emergency services</span>
+        </nav>
       </Slide>
     </div>
   </header>
@@ -56,4 +64,29 @@ header
         img
             width: 2rem
             height: 2rem
+    nav
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        height: 100%
+        text-align: center
+        padding-top: 20%
+
+        h2
+            font-size: 2rem
+            font-weight: 600
+            margin-bottom: 5vh
+            color: #fff
+
+        span
+            font-size: 1.5rem
+            font-weight: 600
+            margin: 1rem 0
+            cursor: pointer
+            width: 100%
+            transition: all 0.3s ease-in-out
+
+            &:hover
+                transform: scale(1.1)
 </style>

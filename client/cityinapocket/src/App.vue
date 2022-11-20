@@ -39,6 +39,10 @@ body, html
   background-color: var(--main-primary-color) !important
 .bm-cross
   background: #fff !important
+  height: 30px !important
+.cross-style
+  top: 2.5vh !important
+  right: 28px !important
   
 .bm-burger-button
   z-index: 999
