@@ -10,6 +10,7 @@
       :textColor="'#fff'"
       :backgroundColor="'#197D2F'"
       :isPrimary="true"
+      @clicked="login"
     />
     <router-link tag="a" to="/register"
       >Don't have an account? Register</router-link
@@ -19,10 +20,30 @@
 
 <script>
 import customButton from "@/components/General/Button";
+import AuthenticationService from "@/services/AuthenticationService";
 export default {
   name: "Login",
   components: {
     customButton,
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const response = await AuthenticationService.login(
+          this.email,
+          this.password
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    },
   },
 };
 </script>
