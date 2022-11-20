@@ -10,7 +10,7 @@
         <nav>
             <h2>Menu</h2>
 
-            <span>How we go</span>
+            <router-link tag="span" to="/transportations">How we go</router-link>
             <router-link tag="span" to="/restaurants">Where we eat</router-link>
             <router-link tag="span" to="/attractions">What we visit</router-link>
             <span>News</span>

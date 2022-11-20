@@ -8,6 +8,7 @@ import Emergency from '../views/EmergencyView.vue'
 import Attractions from '../views/AttractionsView.vue'
 import Profile from '../views/ProfileView.vue'
 import Restaurants from '../views/RestaurantsView.vue'
+import Transportations from '../views/TransportationsView.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/restaurants',
     name: 'restaurants',
     component: Restaurants
+  },
+  {
+    path: '/transportations',
+    name: 'transportations',
+    component: Transportations
   }
 ]
 
