@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar color="blue darken-2" dark>
-      <v-toolbar-title>Utilizatori</v-toolbar-title>
+      <v-toolbar-title>Users</v-toolbar-title>
       <v-spacer />
       <add-admin />
     </v-toolbar>
