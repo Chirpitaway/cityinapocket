@@ -14,7 +14,7 @@ const AddTicket = asyncHandler(async (req, res) => {
             if (provider.ticketTypes.id(type)) {
                 ticketType = provider.ticketTypes.id(type)
                 // Check if the ticket exists
-                const ticketExists = await Ticket.findOne({ type: type, userId: req.user._id, provider: provider, expiresAt: Date.now()});
+                const ticketExists = await Ticket.findOne({ type: type, userId: req.user._id, provider: provider, expiresAt: expiresAt});
 
                 if (ticketExists) {
                     res.status(400);
