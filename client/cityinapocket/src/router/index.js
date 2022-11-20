@@ -5,6 +5,7 @@ import Register from '../views/RegisterView.vue'
 import Home from '../views/HomeView.vue'
 import Landing from '../views/LandingView.vue'
 import Emergency from '../views/EmergencyView.vue'
+import Attractions from '../views/AttractionsView.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/emergency-services',
     name: 'emergency',
     component: Emergency
+  },
+  {
+    path: '/attractions',
+    name: 'attractions',
+    component: Attractions
   }
 ]
 
