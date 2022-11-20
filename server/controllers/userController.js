@@ -30,6 +30,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
         _id: user.id,
         name: name,
         token: generateToken(user._id),
+        city: city,
       });
     }
   } catch (error) {
@@ -50,6 +51,7 @@ const LogInUser = asyncHandler(async (req, res) => {
           _id: user.id,
           name: user.name,
           token: generateToken(user._id),
+          city: user.city,
         });
       } else {
         res.status(401);
