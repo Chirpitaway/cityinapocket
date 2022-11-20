@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <div class="welcome">
-      <h1>Hi, {{ user.name.split(" ")[0] }}</h1>
-      <img src="@/assets/welcome.png" alt="Welcome icon" />
-    </div>
+    <welcome/>
     <div class="weather">
       <h2>Bucharest 12°C</h2>
       <img src="@/assets/weather.png" alt="Weather icon" />
@@ -19,6 +16,7 @@
 <script>
 import { mapGetters } from "vuex";
 import customButton from "@/components/General/Button";
+import welcome from "@/components/General/Welcome";
 
 export default {
   name: "Landing",
@@ -27,6 +25,7 @@ export default {
   },
   components: {
     customButton,
+    welcome,
   },
   mounted() {
     if (!this.user) {
@@ -48,17 +47,7 @@ export default {
     align-items: center
     justify-content: center
     min-height: 90vh
-    .welcome
-      display: flex
-      align-items: center
-      justify-content: center
-      margin-bottom: 20px
-      padding: 0 10vw
-      width: 100%
-      box-sizing: border-box
-
-      img
-        width: 60%
+    
     .weather
       display: flex
       width: 100%
@@ -71,10 +60,6 @@ export default {
       img
         width: 15%
         margin-left: 30px
-    h1
-        font-size: 2rem
-        margin-bottom: 1rem
-        color: var(--main-primary-color)
     h2
         font-size: 1.5rem
         margin-top: 1rem
