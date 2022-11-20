@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import provider from "../Provider";
+import provider from "./Provider";
 import ProviderService from "../../services/ProviderService";
 import { mapGetters } from "vuex";
 export default {
@@ -39,3 +39,27 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.container
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  height: 100%
+  text-align: center
+  padding: 0 5vw
+  box-sizing: border-box
+  color: var(--main-primary-color)
+  h1
+    font-size: 2rem
+    margin-bottom: 10vh
+  a
+    font-size: 1.5rem
+    margin-bottom: 1rem
+    font-weight: bold
+    text-decoration: none
+    color: var(--main-primary-color)
+    &:hover
+      text-decoration: underline
+</style>
