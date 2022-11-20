@@ -14,7 +14,7 @@
             <span>Where we eat</span>
             <span>What we visit</span>
             <span>News</span>
-            <span>Emergency services</span>
+            <router-link tag="span" to="/emergency-services">Emergency services</router-link>
         </nav>
       </Slide>
     </div>

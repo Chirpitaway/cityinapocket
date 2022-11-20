@@ -4,6 +4,7 @@ import Login from '../views/LoginView.vue'
 import Register from '../views/RegisterView.vue'
 import Home from '../views/HomeView.vue'
 import Landing from '../views/LandingView.vue'
+import Emergency from '../views/EmergencyView.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/landing',
     name: 'landing',
     component: Landing
+  },
+  {
+    path: '/emergency-services',
+    name: 'emergency',
+    component: Emergency
   }
 ]
 
