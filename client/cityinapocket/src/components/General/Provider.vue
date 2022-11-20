@@ -7,6 +7,7 @@
       <div class="tag" v-for="tag in tags" :key="tag">
         {{ tag }}
       </div>
+      <div class="tag" v-if="price">{{price}}</div>
     </div>
   </div>
 </template>
@@ -21,7 +22,9 @@ export default {
     },
     tags: {
       type: Array,
-      required: true,
+    },
+    price: {
+      type: Number,
     },
     id: {
       type: String,
