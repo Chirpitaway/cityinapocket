@@ -7,7 +7,7 @@
     </div>
     <h2>Let's see what you need</h2>
 
-    <custom-button :buttonText="'Food'" @clicked="goTo('/food')" />
+    <custom-button :buttonText="'Food'" @clicked="goTo('/restaurants')" />
     <custom-button :buttonText="'Transport'" @clicked="goTo('/transport')" />
     <custom-button :buttonText="'Fun'" @clicked="goTo('/attractions')" />
   </div>

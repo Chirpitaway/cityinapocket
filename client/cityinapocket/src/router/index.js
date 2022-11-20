@@ -7,6 +7,7 @@ import Landing from '../views/LandingView.vue'
 import Emergency from '../views/EmergencyView.vue'
 import Attractions from '../views/AttractionsView.vue'
 import Profile from '../views/ProfileView.vue'
+import Restaurants from '../views/RestaurantsView.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/restaurants',
+    name: 'restaurants',
+    component: Restaurants
   }
 ]
 
