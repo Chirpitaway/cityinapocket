@@ -12,7 +12,7 @@
 
     <custom-button :buttonText="'Food'" @clicked="goTo('/food')" />
     <custom-button :buttonText="'Transport'" @clicked="goTo('/transport')" />
-    <custom-button :buttonText="'Fun'" @clicked="goTo('/fun')" />
+    <custom-button :buttonText="'Fun'" @clicked="goTo('/attractions')" />
   </div>
 </template>
   

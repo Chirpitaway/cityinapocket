@@ -12,7 +12,7 @@
 
             <span>How we go</span>
             <span>Where we eat</span>
-            <span>What we visit</span>
+            <router-link tag="span" to="/attractions">What we visit</router-link>
             <span>News</span>
             <router-link tag="span" to="/emergency-services">Emergency services</router-link>
         </nav>
