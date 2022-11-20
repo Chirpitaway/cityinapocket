@@ -15,6 +15,7 @@
             <router-link tag="span" to="/attractions">What we visit</router-link>
             <span>News</span>
             <router-link tag="span" to="/emergency-services">Emergency services</router-link>
+            <router-link tag="span" to="/profile">My profile</router-link>
         </nav>
       </Slide>
     </div>
