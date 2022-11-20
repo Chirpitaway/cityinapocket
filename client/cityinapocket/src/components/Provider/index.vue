@@ -8,6 +8,12 @@
       :price="ticketType.price"
       :id="ticketType._id"
     />
+    <h1>Comments: </h1>
+    <h3 v-if="provider.comments.length <= 0">Acest furnizor nu are comentarii inca!</h3>
+    <div v-for="comment in provider.comments" :key="comment._id">
+      <h3>{{ comment.userName }}</h3>
+      <h5>{{ comment.message }}</h5>
+    </div>
   </div>
 </template>
   
@@ -51,12 +57,5 @@ export default {
   h1
     font-size: 2rem
     margin-bottom: 10vh
-    a
-      font-size: 1.5rem
-      margin-bottom: 1rem
-      font-weight: bold
-      text-decoration: none
-      color: var(--main-primary-color)
-      &:hover
-        text-decoration: underline
+
 </style>
