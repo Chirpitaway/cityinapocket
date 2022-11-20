@@ -6,6 +6,7 @@
     <user-table class="my-15" />
     <ticket-table class="my-15" />
     <tag-table class="my-15" />
+    <provider-table class="my-15" />
   </v-container>
 </template>
 
@@ -13,11 +14,13 @@
 import UserTable from "@/components/UserManagement/UserTable";
 import TicketTable from "@/components/TicketManagement/TicketTable";
 import TagTable from "@/components/TagManagement/TagTable";
+import ProviderTable from "@/components/ProviderManagement/ProviderTable";
 export default {
   components: {
     UserTable,
     TicketTable,
     TagTable,
+    ProviderTable,
   },
 };
 </script>
