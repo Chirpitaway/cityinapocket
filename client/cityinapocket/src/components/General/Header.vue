@@ -17,7 +17,7 @@ header
     align-items: center
     padding: 0 5vw
     height: 10vh
-    width: 100vw
+    width: 100%
     box-sizing: border-box
     color: #197D2F
 
