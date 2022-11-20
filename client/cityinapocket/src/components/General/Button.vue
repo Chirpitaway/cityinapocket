@@ -83,11 +83,12 @@
       color: var(--main-primary-color)
       background-color: var(--main-text-color)
   .secondary
-    border: 2px solid var(--main-primary-color)
-    color: var(--main-primary-color)
+    border: 2px solid var(--main-primary-color) !important
+    color: var(--main-primary-color) !important
+    background-color: rgba(0, 0, 0, 0) !important
     &:hover
-      color: var(--main-text-color)
-      background-color: var(--main-primary-color)
+      color: var(--main-text-color) !important
+      background-color: var(--main-primary-color) !important
   @media (screen and max-width: 1000px)
     .button
       width: 170px

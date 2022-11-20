@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <h1>Hi, {{ user.name.split(' ')[0] }}</h1>
+    <h1>Hi, {{ user.name.split(" ")[0] }}</h1>
     <h2>What are you today?</h2>
     <custom-button
       :buttonText="'Local'"
       :textColor="'#fff'"
       :backgroundColor="'#197D2F'"
       :isPrimary="true"
-      @clicked="$router.push('/landing')"
+      @clicked="goTo()"
     />
     <h2>or</h2>
     <custom-button
@@ -15,12 +15,12 @@
       :textColor="'#fff'"
       :backgroundColor="'#197D2F'"
       :isPrimary="true"
-      @clicked="$router.push('/landing')"
+      @clicked="goTo()"
     />
   </div>
 </template>
-
-<script>
+  
+  <script>
 import { mapGetters } from "vuex";
 import customButton from "@/components/General/Button";
 
@@ -37,22 +37,27 @@ export default {
       this.$router.push("/");
     }
   },
+  methods: {
+    goTo() {
+        this.$router.push('/landing')
+    }
+  },
 };
 </script>
-
+  
 <style lang="sass" scoped>
 .container
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  min-height: 90vh
-  h1
-    font-size: 2rem
-    margin-bottom: 1rem
-    color: var(--main-primary-color)
-  h2
-    font-size: 1.5rem
-    margin-top: 1rem
-    color: var(--main-primary-color)
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    min-height: 90vh
+    h1
+        font-size: 2rem
+        margin-bottom: 1rem
+        color: var(--main-primary-color)
+    h2
+        font-size: 1.5rem
+        margin-top: 1rem
+        color: var(--main-primary-color)
 </style>
