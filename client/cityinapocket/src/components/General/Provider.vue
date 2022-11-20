@@ -1,10 +1,10 @@
 <template>
-  <div class="provider">
+  <div class="provider" @click="$router.push('/provider/' + id)">
     <h2 class="name">
       {{ name }}
     </h2>
     <div class="tags">
-      <div class="tag" v-for="tag in tags" :key="tag._id">
+      <div class="tag" v-for="tag in tags" :key="tag">
         {{ tag }}
       </div>
     </div>
@@ -21,6 +21,10 @@ export default {
     },
     tags: {
       type: Array,
+      required: true,
+    },
+    id: {
+      type: String,
       required: true,
     },
   },

@@ -6,6 +6,7 @@
       :key="provider._id"
       :name="provider.name"
       :tags="provider.tags"
+      :id="provider._id"
     />
   </div>
 </template>
